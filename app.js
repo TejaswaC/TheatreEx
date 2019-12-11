@@ -56,7 +56,11 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride("_method"));
 
-mongoose.connect("mongodb://localhost:27017/theatreex", {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://tejaswa:mongoAdmin@cluster0-0ycag.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useCreateIndex: true}).then(()=>{
+	console.log('Connected to DB');
+}).catch(err =>{
+	console.log('Error: ', err.message);
+} );
 
 app.use(bodyParser.urlencoded({extended:true}));
 
